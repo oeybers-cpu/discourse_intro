@@ -6,22 +6,22 @@
   <title>Discourse Analysis & Academic Literacy Development</title>
   <style>
     :root {
-      /* Dark mode color scheme with purple, aqua, and blue tints */
-      --primary-colour: #b162e9;       /* Lighter purple for dark background */
-      --secondary-colour: #63e6be;     /* Bright aqua */
-      --tertiary-colour: #6699ff;      /* Light blue */
-      --background-gradient: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
-      --card-background: #1a1a25;      /* Dark card background */
-      --text-colour: #f0f0f0;          /* Light text for dark background */
-      --text-secondary: #d0d0e0;       /* Slightly less bright text */
-      --text-tertiary: #a0a0c0;        /* Even less bright for secondary text */
-      --border-colour: #3a3a5a;        /* Darker border for cards */
+      /* Ultra-dark color scheme with deep purple gradient */
+      --primary-colour: #c77dff;       /* Brighter purple for better contrast */
+      --secondary-colour: #72efdd;     /* Vibrant aqua */
+      --tertiary-colour: #8ab4f8;      /* Light blue */
+      --background-gradient: linear-gradient(135deg, #000000 0%, #0a041e 40%, #1a0a36 100%);
+      --card-background: #0d071a;      /* Near-black card background */
+      --text-colour: #ffffff;          /* Pure white text */
+      --text-secondary: #e6e6ff;       /* Light blue-white for secondary text */
+      --text-tertiary: #c2c2ff;        /* Slightly less bright for tertiary text */
+      --border-colour: #2a1a40;        /* Dark purple border */
       --nav-width: 240px;
-      --glow-colour: #72efdd;          /* Aqua glow effect */
-      --shadow-S: #00000050;
-      --accent-purple: #c77dff;
-      --accent-aqua: #72efdd;
-      --accent-blue: #7aa2f7;
+      --glow-colour: #8be9fd;          /* Brighter aqua glow effect */
+      --shadow-S: #000000c0;
+      --accent-purple: #d8b4fe;
+      --accent-aqua: #8be9fd;
+      --accent-blue: #8ab4f8;
       
       /* Color variations for different states */
       --purple-light: #d8b4fe;
@@ -32,9 +32,9 @@
       --blue-lighter: #b8d8ff;
       
       /* Hover states */
-      --purple-hover: #d8b4fe;
-      --aqua-hover: #8be9fd;
-      --blue-hover: #8be9fd;
+      --purple-hover: #e6d0ff;
+      --aqua-hover: #a7e8dc;
+      --blue-hover: #b8d8ff;
     }
     
     * {
@@ -48,6 +48,7 @@
       line-height: 1.6;
       color: var(--text-colour);
       background: var(--background-gradient);
+      background-attachment: fixed;
       padding: 0;
       margin: 0;
       min-height: 100vh;
@@ -61,21 +62,21 @@
     /* Navigation Column */
     .nav-column {
       width: var(--nav-width);
-      background: linear-gradient(180deg, #161228 0%, #0f0c29 100%);
+      background: linear-gradient(180deg, #0a041e 0%, #000000 100%);
       color: #f8f9ff;
       padding: 20px 0;
       position: sticky;
       top: 0;
       height: 100vh;
       overflow-y: auto;
-      border-right: 1px solid rgba(177, 98, 233, 0.1);
-      box-shadow: 3px 0 15px rgba(0, 0, 0, 0.3);
+      border-right: 1px solid rgba(199, 125, 255, 0.1);
+      box-shadow: 3px 0 25px rgba(0, 0, 0, 0.7);
       z-index: 10;
     }
     
     .nav-header {
       padding: 0 20px 20px;
-      border-bottom: 1px solid rgba(177, 98, 233, 0.2);
+      border-bottom: 1px solid rgba(199, 125, 255, 0.2);
       margin-bottom: 20px;
     }
     
@@ -87,6 +88,7 @@
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
+      text-shadow: 0 0 10px rgba(199, 125, 255, 0.2);
     }
     
     .nav-links {
@@ -120,13 +122,14 @@
       width: 4px;
       height: 100%;
       background: linear-gradient(to bottom, var(--accent-aqua), var(--accent-purple));
-      box-shadow: 0 0 15px var(--glow-colour);
+      box-shadow: 0 0 20px var(--glow-colour), 0 0 40px rgba(114, 239, 221, 0.3);
     }
     
     .nav-link.active {
       color: white;
       font-weight: 500;
-      background: rgba(177, 98, 233, 0.15);
+      background: rgba(199, 125, 255, 0.15);
+      box-shadow: inset 0 0 10px rgba(199, 125, 255, 0.2);
     }
     
     .nav-link.active::after {
@@ -137,7 +140,7 @@
       width: 4px;
       height: 100%;
       background: linear-gradient(to bottom, var(--accent-aqua), var(--accent-purple));
-      box-shadow: 0 0 15px var(--glow-colour);
+      box-shadow: 0 0 20px var(--glow-colour), 0 0 40px rgba(114, 239, 221, 0.3);
     }
     
     /* Main Content Area */
@@ -162,7 +165,7 @@
       color: transparent;
       line-height: 1.2;
       margin-bottom: 10px;
-      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
     }
     
     .discourse-subtitle {
@@ -182,12 +185,12 @@
     .discourse-card {
       background-color: var(--card-background);
       border-radius: 16px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+      box-shadow: 0 4px 25px rgba(0, 0, 0, 0.7);
       overflow: hidden;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       border: 1px solid var(--border-colour);
       position: relative;
-      backdrop-filter: blur(4px);
+      backdrop-filter: blur(2px);
     }
     
     .discourse-card::before {
@@ -202,7 +205,7 @@
     
     .discourse-card:hover {
       transform: translateY(-5px);
-      box-shadow: 0 10px 30px rgba(177, 98, 233, 0.3);
+      box-shadow: 0 10px 35px rgba(199, 125, 255, 0.4);
     }
     
     .card-title {
@@ -210,11 +213,12 @@
       align-items: center;
       gap: 12px;
       padding: 20px;
-      background: rgba(26, 26, 37, 0.7);
+      background: rgba(13, 7, 26, 0.8);
       border-bottom: 1px solid var(--border-colour);
       font-size: 1.4rem;
       font-weight: 600;
       color: var(--text-colour);
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
     }
     
     .card-icon {
@@ -235,39 +239,55 @@
       text-align: center;
       border-radius: 12px;
       overflow: hidden;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-      border: 1px solid rgba(177, 98, 233, 0.2);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+      border: 1px solid var(--border-colour);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .card-image::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(to bottom, rgba(13, 7, 26, 0) 60%, rgba(13, 7, 26, 0.9));
+      pointer-events: none;
     }
     
     .card-image img {
       width: 100%;
       height: auto;
       display: block;
-      transition: transform 0.3s ease;
-      max-height: 300px;
+      transition: transform 0.4s ease;
+      max-height: 280px;
       object-fit: cover;
+      filter: brightness(0.95);
     }
     
     .card-image:hover img {
-      transform: scale(1.03);
+      transform: scale(1.05);
     }
     
     blockquote {
-      background: rgba(26, 26, 37, 0.7);
+      background: rgba(13, 7, 26, 0.85);
       border-left: 4px solid var(--primary-colour);
       padding: 18px 22px;
       margin: 25px 0;
       border-radius: 0 8px 8px 0;
       font-style: italic;
       position: relative;
-      border: 1px solid rgba(177, 98, 233, 0.15);
+      border: 1px solid rgba(199, 125, 255, 0.15);
       transition: all 0.3s ease;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
     }
     
     blockquote:hover {
       border-left-color: var(--secondary-colour);
-      background: rgba(26, 26, 37, 0.9);
+      background: rgba(13, 7, 26, 0.95);
       transform: translateX(3px);
+      box-shadow: 0 3px 15px rgba(114, 239, 221, 0.2);
     }
     
     blockquote::before {
@@ -276,10 +296,11 @@
       top: -15px;
       left: 10px;
       font-size: 5rem;
-      color: rgba(177, 98, 233, 0.15);
+      color: rgba(199, 125, 255, 0.1);
       font-family: Georgia, serif;
       line-height: 1;
       font-weight: bold;
+      text-shadow: 0 0 10px rgba(199, 125, 255, 0.1);
     }
     
     /* Responsive design */
@@ -332,7 +353,7 @@
       }
       
       .card-image img {
-        max-height: 220px;
+        max-height: 200px;
       }
     }
   </style>
@@ -569,3 +590,5 @@
   </div>
 </body>
 </html>
+
+
