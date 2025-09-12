@@ -229,6 +229,29 @@
       color: var(--text-secondary);
     }
     
+    /* Image styling for cards */
+    .card-image {
+      margin: 20px 0;
+      text-align: center;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(177, 98, 233, 0.2);
+    }
+    
+    .card-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.3s ease;
+      max-height: 300px;
+      object-fit: cover;
+    }
+    
+    .card-image:hover img {
+      transform: scale(1.03);
+    }
+    
     blockquote {
       background: rgba(26, 26, 37, 0.7);
       border-left: 4px solid var(--primary-colour);
@@ -307,6 +330,10 @@
       .discourse-title {
         font-size: 1.8rem;
       }
+      
+      .card-image img {
+        max-height: 220px;
+      }
     }
   </style>
 </head>
@@ -351,6 +378,11 @@
               <div class="card-content">
                 <p>The sociocultural approach in discourse analysis presents a nuanced framework for understanding how language functions as a cultural tool that shapes and is shaped by the communities in which it occurs.</p>
                 <blockquote>"Through understanding discourse as a sociocultural practice, we can better support students in their journey toward academic literacy and success."</blockquote>
+                
+                <!-- Added image for Card 1 -->
+                <div class="card-image">
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Chuck_D._Slakthuset_i_Malm%C3%B6_1991.jpg/580px-Chuck_D._Slakthuset_i_Malm%C3%B6_1991.jpg" alt="Chuck D performing">
+                </div>
               </div>
             </section>
             
@@ -368,6 +400,11 @@
               <div class="card-content">
                 <p>Discourse analysis bridges micro-level linguistic features with macro-level social structures. This dual perspective reveals how individual language choices both reflect and construct broader social realities, power relations, and cultural norms.</p>
                 <blockquote>"Language is not merely a reflection of social structure but an active resource through which social structure is created, maintained, and transformed."</blockquote>
+                
+                <!-- Added image for Card 2 -->
+                <div class="card-image">
+                  <img src="https://imgcdn.stablediffusionweb.com/2024/12/26/61577056-2aeb-49f5-9a9f-1d4fb55334e7.jpg" alt="Discourse analysis visualization">
+                </div>
               </div>
             </section>
             
@@ -383,6 +420,11 @@
               <div class="card-content">
                 <p>Academic writing is fundamentally a process of socialisation into the discourse practices of academic communities. Each discipline has its own conventions, genres, and ways of constructing knowledge that newcomers must learn to navigate effectively.</p>
                 <blockquote>"Becoming a member of an academic discourse community involves not just learning to write in particular ways, but adopting particular ways of thinking, valuing, and seeing the world."</blockquote>
+                
+                <!-- Added image for Card 3 -->
+                <div class="card-image">
+                  <img src="https://visionnewspaper.ca/wp-content/uploads/2016/04/Culture-Minister-the-Honourable-Olivia-Grange-met-with-members-of-the-Rastafarian-Community-1024x682.jpg" alt="Culture Minister meeting with Rastafarian Community">
+                </div>
               </div>
             </section>
             
@@ -401,6 +443,11 @@
               <div class="card-content">
                 <p>Learning academic discourse is mediated through various tools and artefacts, including writing guides, peer feedback, instructor comments, and digital platforms. These mediational means scaffold students' development of academic literacy.</p>
                 <blockquote>"Cognitive development and the acquisition of academic literacy are fundamentally social processes that occur through participation in communities of practice and the use of cultural tools."</blockquote>
+                
+                <!-- Added image for Card 4 -->
+                <div class="card-image">
+                  <img src="https://www.dotmagazine.online/_Resources/Persistent/8/5/f/8/85f83fc15d7c0c6ee3d689514beaa766fcb00706/fotojog-iStock-518278146_WEB.jpeg" alt="Communication visualization">
+                </div>
               </div>
             </section>
             
