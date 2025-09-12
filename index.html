@@ -6,33 +6,35 @@
   <title>Discourse Analysis & Academic Literacy Development</title>
   <style>
     :root {
-      /* Updated color scheme with purple, aqua, and blue tints */
-      --primary-colour: #8338ec;       /* Deep purple */
-      --secondary-colour: #4cc9f0;     /* Vibrant aqua */
-      --tertiary-colour: #4895ef;      /* Soft blue */
-      --background-colour: #f8f9ff;    /* Very light blue background */
-      --card-background: #ffffff;      /* White cards */
-      --text-colour: #333355;          /* Dark blue text for better readability */
-      --border-colour: #e0e6ff;        /* Light purple border */
+      /* Dark mode color scheme with purple, aqua, and blue tints */
+      --primary-colour: #b162e9;       /* Lighter purple for dark background */
+      --secondary-colour: #63e6be;     /* Bright aqua */
+      --tertiary-colour: #6699ff;      /* Light blue */
+      --background-gradient: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+      --card-background: #1a1a25;      /* Dark card background */
+      --text-colour: #f0f0f0;          /* Light text for dark background */
+      --text-secondary: #d0d0e0;       /* Slightly less bright text */
+      --text-tertiary: #a0a0c0;        /* Even less bright for secondary text */
+      --border-colour: #3a3a5a;        /* Darker border for cards */
       --nav-width: 240px;
       --glow-colour: #72efdd;          /* Aqua glow effect */
-      --shadow-S: #00000014;
-      --accent-purple: #9d4edd;
-      --accent-aqua: #4cc9f0;
-      --accent-blue: #4895ef;
+      --shadow-S: #00000050;
+      --accent-purple: #c77dff;
+      --accent-aqua: #72efdd;
+      --accent-blue: #7aa2f7;
       
       /* Color variations for different states */
       --purple-light: #d8b4fe;
-      --purple-lighter: #ede9fe;
-      --aqua-light: #ccf0fa;
-      --aqua-lighter: #f0fdff;
-      --blue-light: #bfdbfe;
-      --blue-lighter: #dbeafe;
+      --purple-lighter: #e6d0ff;
+      --aqua-light: #a7e8dc;
+      --aqua-lighter: #c5e8dc;
+      --blue-light: #a0c4ff;
+      --blue-lighter: #b8d8ff;
       
       /* Hover states */
-      --purple-hover: #7239ea;
-      --aqua-hover: #25a2b3;
-      --blue-hover: #3b82f6;
+      --purple-hover: #d8b4fe;
+      --aqua-hover: #8be9fd;
+      --blue-hover: #8be9fd;
     }
     
     * {
@@ -45,9 +47,10 @@
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       line-height: 1.6;
       color: var(--text-colour);
-      background-color: var(--background-colour);
+      background: var(--background-gradient);
       padding: 0;
       margin: 0;
+      min-height: 100vh;
     }
     
     .layout-wrapper {
@@ -58,20 +61,21 @@
     /* Navigation Column */
     .nav-column {
       width: var(--nav-width);
-      background: linear-gradient(180deg, #4361ee 0%, #3a0ca3 100%);
+      background: linear-gradient(180deg, #161228 0%, #0f0c29 100%);
       color: #f8f9ff;
       padding: 20px 0;
       position: sticky;
       top: 0;
       height: 100vh;
       overflow-y: auto;
-      border-right: 1px solid rgba(255, 255, 255, 0.1);
-      box-shadow: 3px 0 10px rgba(0, 0, 0, 0.05);
+      border-right: 1px solid rgba(177, 98, 233, 0.1);
+      box-shadow: 3px 0 15px rgba(0, 0, 0, 0.3);
+      z-index: 10;
     }
     
     .nav-header {
       padding: 0 20px 20px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      border-bottom: 1px solid rgba(177, 98, 233, 0.2);
       margin-bottom: 20px;
     }
     
@@ -79,7 +83,7 @@
       font-size: 1.4rem;
       font-weight: 600;
       margin-top: 10px;
-      background: linear-gradient(to right, #f8f9ff, #a8dadc);
+      background: linear-gradient(to right, var(--primary-colour), var(--secondary-colour));
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
@@ -95,7 +99,7 @@
       padding: 12px 15px;
       border-radius: 8px;
       margin-bottom: 8px;
-      color: rgba(255, 255, 255, 0.85);
+      color: rgba(255, 255, 255, 0.7);
       text-decoration: none;
       font-size: 0.95rem;
       transition: all 0.3s ease;
@@ -104,7 +108,6 @@
     }
     
     .nav-link:hover {
-      background-color: rgba(255, 255, 255, 0.15);
       color: white;
       transform: translateX(3px);
     }
@@ -121,9 +124,9 @@
     }
     
     .nav-link.active {
-      background-color: rgba(255, 255, 255, 0.2);
       color: white;
       font-weight: 500;
+      background: rgba(177, 98, 233, 0.15);
     }
     
     .nav-link.active::after {
@@ -142,6 +145,8 @@
       flex: 1;
       padding: 20px;
       max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
     }
     
     .discourse-header {
@@ -151,18 +156,20 @@
     .discourse-title {
       font-size: 2.2rem;
       font-weight: 700;
-      background: linear-gradient(to right, var(--primary-colour), var(--tertiary-colour));
+      background: linear-gradient(to right, var(--primary-colour), var(--secondary-colour), var(--tertiary-colour));
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
       line-height: 1.2;
       margin-bottom: 10px;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     }
     
     .discourse-subtitle {
       font-size: 1.1rem;
-      color: #4a4a6a;
+      color: var(--text-secondary);
       max-width: 800px;
+      margin-bottom: 20px;
     }
     
     /* Card Layout - Two cards side by side */
@@ -175,11 +182,12 @@
     .discourse-card {
       background-color: var(--card-background);
       border-radius: 16px;
-      box-shadow: 0 4px 20px rgba(66, 153, 225, 0.1);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
       overflow: hidden;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       border: 1px solid var(--border-colour);
       position: relative;
+      backdrop-filter: blur(4px);
     }
     
     .discourse-card::before {
@@ -194,7 +202,7 @@
     
     .discourse-card:hover {
       transform: translateY(-5px);
-      box-shadow: 0 10px 25px rgba(131, 56, 236, 0.15);
+      box-shadow: 0 10px 30px rgba(177, 98, 233, 0.3);
     }
     
     .card-title {
@@ -202,11 +210,11 @@
       align-items: center;
       gap: 12px;
       padding: 20px;
-      background: linear-gradient(to right, var(--purple-lighter), var(--aqua-lighter));
+      background: rgba(26, 26, 37, 0.7);
       border-bottom: 1px solid var(--border-colour);
       font-size: 1.4rem;
       font-weight: 600;
-      color: #2d3748;
+      color: var(--text-colour);
     }
     
     .card-icon {
@@ -218,17 +226,25 @@
     .card-content {
       padding: 20px;
       font-size: 1.05rem;
+      color: var(--text-secondary);
     }
     
     blockquote {
-      background: linear-gradient(to right, var(--purple-lighter), var(--aqua-lighter));
+      background: rgba(26, 26, 37, 0.7);
       border-left: 4px solid var(--primary-colour);
-      padding: 15px 20px;
-      margin: 20px 0;
+      padding: 18px 22px;
+      margin: 25px 0;
       border-radius: 0 8px 8px 0;
       font-style: italic;
-      color: #4a4a6a;
       position: relative;
+      border: 1px solid rgba(177, 98, 233, 0.15);
+      transition: all 0.3s ease;
+    }
+    
+    blockquote:hover {
+      border-left-color: var(--secondary-colour);
+      background: rgba(26, 26, 37, 0.9);
+      transform: translateX(3px);
     }
     
     blockquote::before {
@@ -237,9 +253,10 @@
       top: -15px;
       left: 10px;
       font-size: 5rem;
-      color: rgba(131, 56, 236, 0.1);
+      color: rgba(177, 98, 233, 0.15);
       font-family: Georgia, serif;
       line-height: 1;
+      font-weight: bold;
     }
     
     /* Responsive design */
@@ -280,6 +297,7 @@
         height: auto;
         max-height: 80px;
         overflow: auto;
+        position: relative;
       }
       
       .content-wrapper {
