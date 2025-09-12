@@ -6,15 +6,33 @@
   <title>Discourse Analysis & Academic Literacy Development</title>
   <style>
     :root {
-      --primary-colour: #3a86ff;
-      --secondary-colour: #8338ec;
-      --background-colour: #f8f9fa;
-      --card-background: #ffffff;
-      --text-colour: #333333;
-      --border-colour: #e0e0e0;
+      /* Updated color scheme with purple, aqua, and blue tints */
+      --primary-colour: #8338ec;       /* Deep purple */
+      --secondary-colour: #4cc9f0;     /* Vibrant aqua */
+      --tertiary-colour: #4895ef;      /* Soft blue */
+      --background-colour: #f8f9ff;    /* Very light blue background */
+      --card-background: #ffffff;      /* White cards */
+      --text-colour: #333355;          /* Dark blue text for better readability */
+      --border-colour: #e0e6ff;        /* Light purple border */
       --nav-width: 240px;
-      --glow-colour: #4cc9f0;
-      --shadow-S: #00000029;
+      --glow-colour: #72efdd;          /* Aqua glow effect */
+      --shadow-S: #00000014;
+      --accent-purple: #9d4edd;
+      --accent-aqua: #4cc9f0;
+      --accent-blue: #4895ef;
+      
+      /* Color variations for different states */
+      --purple-light: #d8b4fe;
+      --purple-lighter: #ede9fe;
+      --aqua-light: #ccf0fa;
+      --aqua-lighter: #f0fdff;
+      --blue-light: #bfdbfe;
+      --blue-lighter: #dbeafe;
+      
+      /* Hover states */
+      --purple-hover: #7239ea;
+      --aqua-hover: #25a2b3;
+      --blue-hover: #3b82f6;
     }
     
     * {
@@ -40,19 +58,20 @@
     /* Navigation Column */
     .nav-column {
       width: var(--nav-width);
-      background-color: #1a1a2e;
-      color: #f8f9fa;
+      background: linear-gradient(180deg, #4361ee 0%, #3a0ca3 100%);
+      color: #f8f9ff;
       padding: 20px 0;
       position: sticky;
       top: 0;
       height: 100vh;
       overflow-y: auto;
-      border-right: 1px solid #333;
+      border-right: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 3px 0 10px rgba(0, 0, 0, 0.05);
     }
     
     .nav-header {
       padding: 0 20px 20px;
-      border-bottom: 1px solid #333;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
       margin-bottom: 20px;
     }
     
@@ -60,6 +79,10 @@
       font-size: 1.4rem;
       font-weight: 600;
       margin-top: 10px;
+      background: linear-gradient(to right, #f8f9ff, #a8dadc);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
     }
     
     .nav-links {
@@ -72,7 +95,7 @@
       padding: 12px 15px;
       border-radius: 8px;
       margin-bottom: 8px;
-      color: #e0e0e0;
+      color: rgba(255, 255, 255, 0.85);
       text-decoration: none;
       font-size: 0.95rem;
       transition: all 0.3s ease;
@@ -81,7 +104,7 @@
     }
     
     .nav-link:hover {
-      background-color: rgba(255, 255, 255, 0.1);
+      background-color: rgba(255, 255, 255, 0.15);
       color: white;
       transform: translateX(3px);
     }
@@ -93,12 +116,12 @@
       left: 0;
       width: 4px;
       height: 100%;
-      background-color: var(--glow-colour);
-      box-shadow: 0 0 10px var(--glow-colour);
+      background: linear-gradient(to bottom, var(--accent-aqua), var(--accent-purple));
+      box-shadow: 0 0 15px var(--glow-colour);
     }
     
     .nav-link.active {
-      background-color: rgba(255, 255, 255, 0.15);
+      background-color: rgba(255, 255, 255, 0.2);
       color: white;
       font-weight: 500;
     }
@@ -110,8 +133,8 @@
       left: 0;
       width: 4px;
       height: 100%;
-      background-color: var(--glow-colour);
-      box-shadow: 0 0 10px var(--glow-colour);
+      background: linear-gradient(to bottom, var(--accent-aqua), var(--accent-purple));
+      box-shadow: 0 0 15px var(--glow-colour);
     }
     
     /* Main Content Area */
@@ -128,14 +151,17 @@
     .discourse-title {
       font-size: 2.2rem;
       font-weight: 700;
-      color: #1a1a2e;
+      background: linear-gradient(to right, var(--primary-colour), var(--tertiary-colour));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
       line-height: 1.2;
       margin-bottom: 10px;
     }
     
     .discourse-subtitle {
       font-size: 1.1rem;
-      color: #666;
+      color: #4a4a6a;
       max-width: 800px;
     }
     
@@ -148,16 +174,27 @@
     
     .discourse-card {
       background-color: var(--card-background);
-      border-radius: 12px;
-      box-shadow: 0 4px 20px var(--shadow-S);
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(66, 153, 225, 0.1);
       overflow: hidden;
-      transition: transform 0.3s ease;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
       border: 1px solid var(--border-colour);
+      position: relative;
+    }
+    
+    .discourse-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(to right, var(--accent-purple), var(--accent-aqua), var(--accent-blue));
     }
     
     .discourse-card:hover {
       transform: translateY(-5px);
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 10px 25px rgba(131, 56, 236, 0.15);
     }
     
     .card-title {
@@ -165,11 +202,11 @@
       align-items: center;
       gap: 12px;
       padding: 20px;
-      background-color: #f5f7fa;
+      background: linear-gradient(to right, var(--purple-lighter), var(--aqua-lighter));
       border-bottom: 1px solid var(--border-colour);
       font-size: 1.4rem;
       font-weight: 600;
-      color: #1a1a2e;
+      color: #2d3748;
     }
     
     .card-icon {
@@ -184,13 +221,25 @@
     }
     
     blockquote {
-      background-color: #f8f9fa;
+      background: linear-gradient(to right, var(--purple-lighter), var(--aqua-lighter));
       border-left: 4px solid var(--primary-colour);
       padding: 15px 20px;
       margin: 20px 0;
-      border-radius: 0 4px 4px 0;
+      border-radius: 0 8px 8px 0;
       font-style: italic;
-      color: #555;
+      color: #4a4a6a;
+      position: relative;
+    }
+    
+    blockquote::before {
+      content: """;
+      position: absolute;
+      top: -15px;
+      left: 10px;
+      font-size: 5rem;
+      color: rgba(131, 56, 236, 0.1);
+      font-family: Georgia, serif;
+      line-height: 1;
     }
     
     /* Responsive design */
@@ -240,11 +289,6 @@
       .discourse-title {
         font-size: 1.8rem;
       }
-    }
-    
-    /* UK spelling adjustments */
-    .uk-spelling {
-      /* This class is just for documentation - actual changes are throughout the CSS */
     }
   </style>
 </head>
