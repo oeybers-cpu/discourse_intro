@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Discourse Analysis & Academic Literacy Development</title>
+  <style>
+    :root {
+      --primary-colour: #3a86ff;
+      --secondary-colour: #8338ec;
+      --background-colour: #f8f9fa;
+      --card-background: #ffffff;
+      --text-colour: #333333;
+      --border-colour: #e0e0e0;
+      --nav-width: 240px;
+      --glow-colour: #4cc9f0;
+      --shadow-S: #00000029;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: var(--text-colour);
+      background-color: var(--background-colour);
+      padding: 0;
+      margin: 0;
+    }
+    
+    .layout-wrapper {
+      display: flex;
+      min-height: 100vh;
+    }
+    
+    /* Navigation Column */
+    .nav-column {
+      width: var(--nav-width);
+      background-color: #1a1a2e;
+      color: #f8f9fa;
+      padding: 20px 0;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow-y: auto;
+      border-right: 1px solid #333;
+    }
+    
+    .nav-header {
+      padding: 0 20px 20px;
+      border-bottom: 1px solid #333;
+      margin-bottom: 20px;
+    }
+    
+    .nav-header h1 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-top: 10px;
+    }
+    
+    .nav-links {
+      list-style: none;
+      padding: 0 10px;
+    }
+    
+    .nav-link {
+      display: block;
+      padding: 12px 15px;
+      border-radius: 8px;
+      margin-bottom: 8px;
+      color: #e0e0e0;
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .nav-link:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+      color: white;
+      transform: translateX(3px);
+    }
+    
+    .nav-link:hover::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background-color: var(--glow-colour);
+      box-shadow: 0 0 10px var(--glow-colour);
+    }
+    
+    .nav-link.active {
+      background-color: rgba(255, 255, 255, 0.15);
+      color: white;
+      font-weight: 500;
+    }
+    
+    .nav-link.active::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background-color: var(--glow-colour);
+      box-shadow: 0 0 10px var(--glow-colour);
+    }
+    
+    /* Main Content Area */
+    .content-wrapper {
+      flex: 1;
+      padding: 20px;
+      max-width: 1200px;
+    }
+    
+    .discourse-header {
+      margin-bottom: 30px;
+    }
+    
+    .discourse-title {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: #1a1a2e;
+      line-height: 1.2;
+      margin-bottom: 10px;
+    }
+    
+    .discourse-subtitle {
+      font-size: 1.1rem;
+      color: #666;
+      max-width: 800px;
+    }
+    
+    /* Card Layout - Two cards side by side */
+    .discourse-main {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 25px;
+    }
+    
+    .discourse-card {
+      background-color: var(--card-background);
+      border-radius: 12px;
+      box-shadow: 0 4px 20px var(--shadow-S);
+      overflow: hidden;
+      transition: transform 0.3s ease;
+      border: 1px solid var(--border-colour);
+    }
+    
+    .discourse-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    }
+    
+    .card-title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 20px;
+      background-color: #f5f7fa;
+      border-bottom: 1px solid var(--border-colour);
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: #1a1a2e;
+    }
+    
+    .card-icon {
+      width: 24px;
+      height: 24px;
+      color: var(--primary-colour);
+    }
+    
+    .card-content {
+      padding: 20px;
+      font-size: 1.05rem;
+    }
+    
+    blockquote {
+      background-color: #f8f9fa;
+      border-left: 4px solid var(--primary-colour);
+      padding: 15px 20px;
+      margin: 20px 0;
+      border-radius: 0 4px 4px 0;
+      font-style: italic;
+      color: #555;
+    }
+    
+    /* Responsive design */
+    @media (max-width: 1100px) {
+      .discourse-main {
+        grid-template-columns: 1fr;
+      }
+      
+      .nav-column {
+        width: 70px;
+      }
+      
+      .nav-header h1, .nav-links span {
+        display: none;
+      }
+      
+      .nav-link {
+        padding: 12px;
+        text-align: center;
+      }
+      
+      .nav-link span {
+        display: none;
+      }
+      
+      .nav-link svg {
+        margin: 0;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .layout-wrapper {
+        flex-direction: column;
+      }
+      
+      .nav-column {
+        width: 100%;
+        height: auto;
+        max-height: 80px;
+        overflow: auto;
+      }
+      
+      .content-wrapper {
+        padding: 15px;
+      }
+      
+      .discourse-title {
+        font-size: 1.8rem;
+      }
+    }
+    
+    /* UK spelling adjustments */
+    .uk-spelling {
+      /* This class is just for documentation - actual changes are throughout the CSS */
+    }
+  </style>
+</head>
+<body>
+  <div id="root">
+    <div class="layout-wrapper">
+      <!-- Navigation Column -->
+      <nav class="nav-column">
+        <div class="nav-header">
+          <h1>Discourse Analysis</h1>
+        </div>
+        <ul class="nav-links">
+          <li><a href="#intro" class="nav-link active"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-book-open"><path d="M12 7v14"></path><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"></path></svg> <span>Introduction</span></a></li>
+          <li><a href="#micro-macro" class="nav-link"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-target"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle><path d="M20 12h2M4 12h2M12 20v2M12 4v2"></path></svg> <span>Micro-Macro Perspectives</span></a></li>
+          <li><a href="#the-power-of-discourse" class="nav-link"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-book-open"><path d="M12 7v14"></path><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"></path></svg> <span>The Power of Discourse</span></a></li>
+          <li><a href="#mediation" class="nav-link"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-network"><rect x="16" y="16" width="6" height="6" rx="1"></rect><rect x="2" y="16" width="6" height="6" rx="1"></rect><rect x="9" y="2" width="6" height="6" rx="1"></rect><path d="M5 16v-3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3"></path><path d="M12 12V8"></path></svg> <span>Mediation & Tools</span></a></li>
+          <li><a href="#academic-conventions" class="nav-link"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-book"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"></path></svg> <span>Academic Conventions</span></a></li>
+          <li><a href="#interactional-norms" class="nav-link"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-message-circle"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"></path></svg> <span>Interactional Norms</span></a></li>
+          <li><a href="#bridging-theory" class="nav-link"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-zap"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"></path></svg> <span>Bridging Theory & Practice</span></a></li>
+          <li><a href="#faq" class="nav-link"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-help"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg> <span>FAQ</span></a></li>
+        </ul>
+      </nav>
+      
+      <!-- Main Content -->
+      <div class="content-wrapper">
+        <div class="discourse-container">
+          <header class="discourse-header">
+            <h1 class="discourse-title">Discourse Analysis & Academic Literacy Development</h1>
+            <p class="discourse-subtitle">Understanding discourse as a sociocultural practice is fundamental to developing academic literacy and successfully participating in scholarly communities.</p>
+          </header>
+          
+          <main class="discourse-main">
+            <!-- Card 1: Introduction -->
+            <section id="intro" class="discourse-card intro-card">
+              <h2 class="card-title">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-book-open card-icon" aria-hidden="true">
+                  <path d="M12 7v14"></path>
+                  <path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"></path>
+                </svg>
+                The Power of Discourse
+              </h2>
+              <div class="card-content">
+                <p>The sociocultural approach in discourse analysis presents a nuanced framework for understanding how language functions as a cultural tool that shapes and is shaped by the communities in which it occurs.</p>
+                <blockquote>"Through understanding discourse as a sociocultural practice, we can better support students in their journey toward academic literacy and success."</blockquote>
+              </div>
+            </section>
+            
+            <!-- Card 2: Micro-Macro Perspectives -->
+            <section id="micro-macro" class="discourse-card concept-card">
+              <h2 class="card-title">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-target card-icon" aria-hidden="true">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <circle cx="12" cy="12" r="6"></circle>
+                  <circle cx="12" cy="12" r="2"></circle>
+                  <path d="M20 12h2M4 12h2M12 20v2M12 4v2"></path>
+                </svg>
+                Micro-Macro Perspectives
+              </h2>
+              <div class="card-content">
+                <p>Discourse analysis bridges micro-level linguistic features with macro-level social structures. This dual perspective reveals how individual language choices both reflect and construct broader social realities, power relations, and cultural norms.</p>
+                <blockquote>"Language is not merely a reflection of social structure but an active resource through which social structure is created, maintained, and transformed."</blockquote>
+              </div>
+            </section>
+            
+            <!-- Card 3: The Power of Discourse -->
+            <section id="the-power-of-discourse" class="discourse-card concept-card">
+              <h2 class="card-title">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-book-open card-icon" aria-hidden="true">
+                  <path d="M12 7v14"></path>
+                  <path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"></path>
+                </svg>
+                Discourse Communities
+              </h2>
+              <div class="card-content">
+                <p>Academic writing is fundamentally a process of socialisation into the discourse practices of academic communities. Each discipline has its own conventions, genres, and ways of constructing knowledge that newcomers must learn to navigate effectively.</p>
+                <blockquote>"Becoming a member of an academic discourse community involves not just learning to write in particular ways, but adopting particular ways of thinking, valuing, and seeing the world."</blockquote>
+              </div>
+            </section>
+            
+            <!-- Card 4: Mediation & Tools -->
+            <section id="mediation" class="discourse-card concept-card">
+              <h2 class="card-title">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-network card-icon" aria-hidden="true">
+                  <rect x="16" y="16" width="6" height="6" rx="1"></rect>
+                  <rect x="2" y="16" width="6" height="6" rx="1"></rect>
+                  <rect x="9" y="2" width="6" height="6" rx="1"></rect>
+                  <path d="M5 16v-3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3"></path>
+                  <path d="M12 12V8"></path>
+                </svg>
+                Mediation & Tools
+              </h2>
+              <div class="card-content">
+                <p>Learning academic discourse is mediated through various tools and artefacts, including writing guides, peer feedback, instructor comments, and digital platforms. These mediational means scaffold students' development of academic literacy.</p>
+                <blockquote>"Cognitive development and the acquisition of academic literacy are fundamentally social processes that occur through participation in communities of practice and the use of cultural tools."</blockquote>
+              </div>
+            </section>
+            
+            <!-- Card 5: Academic Conventions -->
+            <section id="academic-conventions" class="discourse-card concept-card">
+              <h2 class="card-title">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-book card-icon" aria-hidden="true">
+                  <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"></path>
+                </svg>
+                Academic Conventions
+              </h2>
+              <div class="card-content">
+                <p>Academic writing conventions are cultural tools that embody the values, practices, and ways of knowing of academic communities. Mastery of these conventions is essential for successful participation in scholarly discourse.</p>
+                <blockquote>"Academic writing conventions are not arbitrary rules but meaningful practices that serve specific communicative purposes within disciplinary contexts."</blockquote>
+              </div>
+            </section>
+            
+            <!-- Card 6: Interactional Norms -->
+            <section id="interactional-norms" class="discourse-card concept-card">
+              <h2 class="card-title">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-message-circle card-icon" aria-hidden="true">
+                  <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"></path>
+                </svg>
+                Navigating Academic Interaction
+              </h2>
+              <div class="card-content">
+                <p>Academic discourse involves specific interactional norms that govern how scholars engage with each other's work through citation practices, hedging language, and the construction of arguments that position the writer within ongoing scholarly conversations.</p>
+                <blockquote>"Academic writing is fundamentally dialogic, requiring writers to position themselves in relation to existing scholarship and anticipated reader responses."</blockquote>
+              </div>
+            </section>
+            
+            <!-- Card 7: Bridging Theory & Practice -->
+            <section id="bridging-theory" class="discourse-card concept-card">
+              <h2 class="card-title">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-zap card-icon" aria-hidden="true">
+                  <path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"></path>
+                </svg>
+                Bridging Theory and Practice
+              </h2>
+              <div class="card-content">
+                <p>Understanding discourse analysis through a sociocultural lens provides a comprehensive framework for comprehending academic literacy development as a process of socialisation into disciplinary communities.</p>
+                <blockquote>"Academic literacy development is fundamentally a process of socialisation into the discourse practices of academic communities."</blockquote>
+              </div>
+            </section>
+            
+            <!-- Card 8: FAQ -->
+            <section id="faq" class="discourse-card faq-card">
+              <h2 class="card-title">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-help card-icon" aria-hidden="true">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                  <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                </svg>
+                Frequently Asked Questions
+              </h2>
+              <div class="card-content">
+                <p><strong>Q: Why is discourse analysis important for academic success?</strong><br>
+                A: Discourse analysis helps students understand the implicit rules and conventions of academic writing in their discipline, enabling them to communicate more effectively with their scholarly community.</p>
+                
+                <p><strong>Q: How does discourse analysis differ from traditional grammar instruction?</strong><br>
+                A: While grammar focuses on sentence-level correctness, discourse analysis examines how language functions in social contexts to achieve communicative purposes within specific communities.</p>
+                
+                <p><strong>Q: Can discourse analysis help with critical thinking?</strong><br>
+                A: Yes, by examining how arguments are constructed and how knowledge is represented in academic texts, students develop deeper critical awareness of how meaning is created and contested.</p>
+              </div>
+            </section>
+          </main>
+        </div>
+      </div>
+    </div>
+    
+    <script>
+      // Navigation highlighting based on scroll position
+      document.addEventListener('DOMContentLoaded', function() {
+        const sections = document.querySelectorAll('.discourse-card');
+        const navLinks = document.querySelectorAll('.nav-link');
+        
+        // Update active nav item based on scroll position
+        window.addEventListener('scroll', () => {
+          let current = '';
+          
+          sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            
+            if (pageYOffset >= (sectionTop - 100)) {
+              current = section.getAttribute('id');
+            }
+          });
+          
+          navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === `#${current}`) {
+              link.classList.add('active');
+            }
+          });
+        });
+        
+        // Smooth scrolling for navigation links
+        navLinks.forEach(link => {
+          link.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            const targetId = this.getAttribute('href');
+            const targetSection = document.querySelector(targetId);
+            
+            window.scrollTo({
+              top: targetSection.offsetTop - 20,
+              behavior: 'smooth'
+            });
+            
+            // Update active link immediately
+            navLinks.forEach(l => l.classList.remove('active'));
+            this.classList.add('active');
+          });
+        });
+      });
+    </script>
+  </div>
+</body>
+</html>
