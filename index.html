@@ -243,6 +243,7 @@
       border: 1px solid var(--border-colour);
       position: relative;
       overflow: hidden;
+      cursor: pointer;
     }
     
     .card-image::after {
@@ -268,6 +269,55 @@
     
     .card-image:hover img {
       transform: scale(1.05);
+    }
+    
+    /* Lightbox styles */
+    .lightbox {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.9);
+      overflow: auto;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .lightbox-content {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 8px;
+      box-shadow: 0 0 50px rgba(199, 125, 255, 0.5);
+    }
+    
+    .close-lightbox {
+      position: absolute;
+      top: 20px;
+      right: 35px;
+      color: #f1f1f1;
+      font-size: 40px;
+      font-weight: bold;
+      transition: 0.3s;
+      cursor: pointer;
+    }
+    
+    .close-lightbox:hover,
+    .close-lightbox:focus {
+      color: #bbb;
+      text-decoration: none;
+    }
+    
+    .image-caption {
+      text-align: center;
+      margin-top: 8px;
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      padding: 0 10px;
+      max-width: 100%;
+      word-wrap: break-word;
     }
     
     blockquote {
@@ -431,9 +481,10 @@
                 <p>The sociocultural approach in discourse analysis presents a nuanced framework for understanding how language functions as a cultural tool that shapes and is shaped by the communities in which it occurs.</p>
                 <blockquote>"Through understanding discourse as a sociocultural practice, we can better support students in their journey toward academic literacy and success."</blockquote>
                 
-                <!-- Added image for Card 1 -->
-                <div class="card-image">
-                  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Chuck_D._Slakthuset_i_Malm%C3%B6_1991.jpg/580px-Chuck_D._Slakthuset_i_Malm%C3%B6_1991.jpg  " alt="Chuck D performing">
+                <!-- Added image for Card 1 with caption and lightbox -->
+                <div class="card-image" onclick="openLightbox(this)">
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Chuck_D._Slakthuset_i_Malm%C3%B6_1991.jpg/580px-Chuck_D._Slakthuset_i_Malm%C3%B6_1991.jpg" alt="Chuck D performing">
+                  <div class="image-caption">Chuck D performing at Slakthuset in Malmö, 1991</div>
                 </div>
               </div>
             </section>
@@ -453,9 +504,10 @@
                 <p>Discourse analysis bridges micro-level linguistic features with macro-level social structures. This dual perspective reveals how individual language choices both reflect and construct broader social realities, power relations, and cultural norms.</p>
                 <blockquote>"Language is not merely a reflection of social structure but an active resource through which social structure is created, maintained, and transformed."</blockquote>
                 
-                <!-- Replaced image for Card 2 with the new one -->
-                <div class="card-image">
+                <!-- Replaced image for Card 2 with the new one and added caption -->
+                <div class="card-image" onclick="openLightbox(this)">
                   <img src="https://miro.medium.com/v2/resize:fit:1358/0*e-Ywdg69I79tfX2r.jpg" alt="Discourse analysis visualization">
+                  <div class="image-caption">Visualization of micro-macro perspectives in discourse analysis</div>
                 </div>
               </div>
             </section>
@@ -473,9 +525,10 @@
                 <p>Academic writing is fundamentally a process of socialisation into the discourse practices of academic communities. Each discipline has its own conventions, genres, and ways of constructing knowledge that newcomers must learn to navigate effectively.</p>
                 <blockquote>"Becoming a member of an academic discourse community involves not just learning to write in particular ways, but adopting particular ways of thinking, valuing, and seeing the world."</blockquote>
                 
-                <!-- Added image for Card 3 -->
-                <div class="card-image">
-                  <img src="https://visionnewspaper.ca/wp-content/uploads/2016/04/Culture-Minister-the-Honourable-Olivia-Grange-met-with-members-of-the-Rastafarian-Community-1024x682.jpg  " alt="Culture Minister meeting with Rastafarian Community">
+                <!-- Added image for Card 3 with caption -->
+                <div class="card-image" onclick="openLightbox(this)">
+                  <img src="https://visionnewspaper.ca/wp-content/uploads/2016/04/Culture-Minister-the-Honourable-Olivia-Grange-met-with-members-of-the-Rastafarian-Community-1024x682.jpg" alt="Culture Minister meeting with Rastafarian Community">
+                  <div class="image-caption">Culture Minister Olivia Grange meeting with Rastafarian Community members</div>
                 </div>
               </div>
             </section>
@@ -496,9 +549,10 @@
                 <p>Learning academic discourse is mediated through various tools and artefacts, including writing guides, peer feedback, instructor comments, and digital platforms. These mediational means scaffold students' development of academic literacy.</p>
                 <blockquote>"Cognitive development and the acquisition of academic literacy are fundamentally social processes that occur through participation in communities of practice and the use of cultural tools."</blockquote>
                 
-                <!-- Added image for Card 4 -->
-                <div class="card-image">
-                  <img src="https://www.dotmagazine.online/_Resources/Persistent/8/5/f/8/85f83fc15d7c0c6ee3d689514beaa766fcb00706/fotojog-iStock-518278146_WEB.jpeg  " alt="Communication visualization">
+                <!-- Added image for Card 4 with caption -->
+                <div class="card-image" onclick="openLightbox(this)">
+                  <img src="https://www.dotmagazine.online/_Resources/Persistent/8/5/f/8/85f83fc15d7c0c6ee3d689514beaa766fcb00706/fotojog-iStock-518278146_WEB.jpeg" alt="Communication visualization">
+                  <div class="image-caption">Visualization of communication networks and interaction patterns</div>
                 </div>
               </div>
             </section>
@@ -515,9 +569,10 @@
                 <p>Academic writing conventions are cultural tools that embody the values, practices, and ways of knowing of academic communities. Mastery of these conventions is essential for successful participation in scholarly discourse.</p>
                 <blockquote>"Academic writing conventions are not arbitrary rules but meaningful practices that serve specific communicative purposes within disciplinary contexts."</blockquote>
                 
-                <!-- Added image for Card 5 (to the left of academic interaction) -->
-                <div class="card-image">
+                <!-- Added image for Card 5 with caption -->
+                <div class="card-image" onclick="openLightbox(this)">
                   <img src="https://github.com/oeybers-cpu/discourse_intro/blob/main/1757700107.png?raw=true" alt="Academic writing conventions visualization">
+                  <div class="image-caption">Visualization of academic writing conventions and disciplinary practices</div>
                 </div>
               </div>
             </section>
@@ -534,9 +589,10 @@
                 <p>Academic discourse involves specific interactional norms that govern how scholars engage with each other's work through citation practices, hedging language, and the construction of arguments that position the writer within ongoing scholarly conversations.</p>
                 <blockquote>"Academic writing is fundamentally dialogic, requiring writers to position themselves in relation to existing scholarship and anticipated reader responses."</blockquote>
                 
-                <!-- Added the requested image for Card 6 (academic interaction) -->
-                <div class="card-image">
-                  <img src="  https://github.com/oeybers-cpu/discourse_intro/blob/main/1757701319.png?raw=true" alt="Academic interaction visualization">
+                <!-- Added image for Card 6 with caption -->
+                <div class="card-image" onclick="openLightbox(this)">
+                  <img src="https://github.com/oeybers-cpu/discourse_intro/blob/main/1757701319.png?raw=true" alt="Academic interaction visualization">
+                  <div class="image-caption">Visualization of academic dialogue and scholarly interaction</div>
                 </div>
               </div>
             </section>
@@ -553,9 +609,10 @@
                 <p>Understanding discourse analysis through a sociocultural lens provides a comprehensive framework for comprehending academic literacy development as a process of socialisation into disciplinary communities.</p>
                 <blockquote>"Academic literacy development is fundamentally a process of socialisation into the discourse practices of academic communities."</blockquote>
                 
-                <!-- Added the requested image for Card 7 (Bridging Theory) -->
-                <div class="card-image">
-                  <img src="  https://github.com/oeybers-cpu/discourse_intro/blob/main/digi%20bridge.png?raw=true" alt="Bridging theory and practice visualization">
+                <!-- Added image for Card 7 with caption -->
+                <div class="card-image" onclick="openLightbox(this)">
+                  <img src="https://github.com/oeybers-cpu/discourse_intro/blob/main/digi%20bridge.png?raw=true" alt="Bridging theory and practice visualization">
+                  <div class="image-caption">Visualization of bridging theoretical concepts with practical application in academic discourse</div>
                 </div>
               </div>
             </section>
@@ -601,6 +658,12 @@
       </div>
     </div>
     
+    <!-- Lightbox for viewing images in larger version -->
+    <div id="lightbox" class="lightbox">
+      <span class="close-lightbox">&times;</span>
+      <img class="lightbox-content" id="lightbox-img">
+    </div>
+    
     <!-- Footer section added at the bottom -->
     <footer>
       <a href="#" class="top-link" id="top-link">Top</a>
@@ -608,6 +671,33 @@
     </footer>
     
     <script>
+      // Lightbox functionality
+      function openLightbox(element) {
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        
+        // Get the image source from the clicked element
+        const imgSrc = element.querySelector('img').src;
+        
+        // Set the image source for the lightbox
+        lightboxImg.src = imgSrc;
+        
+        // Show the lightbox
+        lightbox.style.display = 'flex';
+      }
+      
+      // Close lightbox when clicking the close button
+      document.querySelector('.close-lightbox').addEventListener('click', function() {
+        document.getElementById('lightbox').style.display = 'none';
+      });
+      
+      // Close lightbox when clicking outside the image
+      document.getElementById('lightbox').addEventListener('click', function(event) {
+        if (event.target === this) {
+          this.style.display = 'none';
+        }
+      });
+      
       // Navigation highlighting based on scroll position
       document.addEventListener('DOMContentLoaded', function() {
         const sections = document.querySelectorAll('.discourse-card');
@@ -666,4 +756,3 @@
   </div>
 </body>
 </html>
-The changes are clean and maintain the original design while implementing all the requested modifications.
