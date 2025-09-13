@@ -362,6 +362,29 @@
         max-height: 200px;
       }
     }
+    
+    /* Footer styling */
+    footer {
+      background: linear-gradient(180deg, #0a041e 0%, #000000 100%);
+      color: #f8f9ff;
+      padding: 20px;
+      text-align: center;
+      margin-top: 20px;
+      border-top: 1px solid rgba(199, 125, 255, 0.1);
+    }
+    
+    .top-link {
+      display: inline-block;
+      margin: 0 10px;
+      color: var(--primary-colour);
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    
+    .top-link:hover {
+      color: var(--secondary-colour);
+      text-decoration: underline;
+    }
   </style>
 </head>
 <body>
@@ -370,7 +393,9 @@
       <!-- Navigation Column -->
       <nav class="nav-column">
         <div class="nav-header">
-          <h1>Discourse Analysis</h1>
+          <a href="https://oeybers-cpu.github.io/a_lit_models/" class="nav-header-link">
+            <h1>Discourse Analysis</h1>
+          </a>
         </div>
         <ul class="nav-links">
           <li><a href="#intro" class="nav-link active"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-book-open"><path d="M12 7v14"></path><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"></path></svg> <span>Introduction</span></a></li>
@@ -408,7 +433,7 @@
                 
                 <!-- Added image for Card 1 -->
                 <div class="card-image">
-                  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Chuck_D._Slakthuset_i_Malm%C3%B6_1991.jpg/580px-Chuck_D._Slakthuset_i_Malm%C3%B6_1991.jpg" alt="Chuck D performing">
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Chuck_D._Slakthuset_i_Malm%C3%B6_1991.jpg/580px-Chuck_D._Slakthuset_i_Malm%C3%B6_1991.jpg  " alt="Chuck D performing">
                 </div>
               </div>
             </section>
@@ -428,9 +453,9 @@
                 <p>Discourse analysis bridges micro-level linguistic features with macro-level social structures. This dual perspective reveals how individual language choices both reflect and construct broader social realities, power relations, and cultural norms.</p>
                 <blockquote>"Language is not merely a reflection of social structure but an active resource through which social structure is created, maintained, and transformed."</blockquote>
                 
-                <!-- Added image for Card 2 -->
+                <!-- Replaced image for Card 2 with the new one -->
                 <div class="card-image">
-                  <img src="https://imgcdn.stablediffusionweb.com/2024/12/26/61577056-2aeb-49f5-9a9f-1d4fb55334e7.jpg" alt="Discourse analysis visualization">
+                  <img src="https://miro.medium.com/v2/resize:fit:1358/0*e-Ywdg69I79tfX2r.jpg" alt="Discourse analysis visualization">
                 </div>
               </div>
             </section>
@@ -450,7 +475,7 @@
                 
                 <!-- Added image for Card 3 -->
                 <div class="card-image">
-                  <img src="https://visionnewspaper.ca/wp-content/uploads/2016/04/Culture-Minister-the-Honourable-Olivia-Grange-met-with-members-of-the-Rastafarian-Community-1024x682.jpg" alt="Culture Minister meeting with Rastafarian Community">
+                  <img src="https://visionnewspaper.ca/wp-content/uploads/2016/04/Culture-Minister-the-Honourable-Olivia-Grange-met-with-members-of-the-Rastafarian-Community-1024x682.jpg  " alt="Culture Minister meeting with Rastafarian Community">
                 </div>
               </div>
             </section>
@@ -473,7 +498,7 @@
                 
                 <!-- Added image for Card 4 -->
                 <div class="card-image">
-                  <img src="https://www.dotmagazine.online/_Resources/Persistent/8/5/f/8/85f83fc15d7c0c6ee3d689514beaa766fcb00706/fotojog-iStock-518278146_WEB.jpeg" alt="Communication visualization">
+                  <img src="https://www.dotmagazine.online/_Resources/Persistent/8/5/f/8/85f83fc15d7c0c6ee3d689514beaa766fcb00706/fotojog-iStock-518278146_WEB.jpeg  " alt="Communication visualization">
                 </div>
               </div>
             </section>
@@ -511,7 +536,7 @@
                 
                 <!-- Added the requested image for Card 6 (academic interaction) -->
                 <div class="card-image">
-                  <img src="https://github.com/oeybers-cpu/discourse_intro/blob/main/1757701319.png?raw=true" alt="Academic interaction visualization">
+                  <img src="  https://github.com/oeybers-cpu/discourse_intro/blob/main/1757701319.png?raw=true" alt="Academic interaction visualization">
                 </div>
               </div>
             </section>
@@ -530,7 +555,7 @@
                 
                 <!-- Added the requested image for Card 7 (Bridging Theory) -->
                 <div class="card-image">
-                  <img src="https://github.com/oeybers-cpu/discourse_intro/blob/main/digi%20bridge.png?raw=true" alt="Bridging theory and practice visualization">
+                  <img src="  https://github.com/oeybers-cpu/discourse_intro/blob/main/digi%20bridge.png?raw=true" alt="Bridging theory and practice visualization">
                 </div>
               </div>
             </section>
@@ -575,6 +600,12 @@
         </div>
       </div>
     </div>
+    
+    <!-- Footer section added at the bottom -->
+    <footer>
+      <a href="#" class="top-link" id="top-link">Top</a>
+      <span>Dr Oscar Eybers 2025</span>
+    </footer>
     
     <script>
       // Navigation highlighting based on scroll position
@@ -621,8 +652,18 @@
             this.classList.add('active');
           });
         });
+        
+        // Top link functionality
+        document.getElementById('top-link').addEventListener('click', function(e) {
+          e.preventDefault();
+          window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+          });
+        });
       });
     </script>
   </div>
 </body>
 </html>
+The changes are clean and maintain the original design while implementing all the requested modifications.
